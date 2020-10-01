@@ -1,0 +1,67 @@
+﻿@inherits RestaurantItemModel
+@page "/restaurantItem/{action}/{paramEmpID:int}"
+@page "/restaurantItem/{action}"
+
+
+
+@if (restaurant == null)
+{
+    <p><em>Loading...</em></p> }
+else
+{
+    <h1>Ресторан @restaurant.NameRestaurant</h1>
+    <div class="card border-white mb-3" style="width: 80rem;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="@restaurant.Picture" class="card-img-top" alt="...">
+            </div>
+            <div class="col-md-8 ">
+                <div class="card-body border-white">
+
+                    <p class="card-text">@restaurant.Description</p>
+                </div>
+                <ul class="list-group border-white list-group-flush">
+                    <li class="list-group-item border-white">Количество столиков: @restaurant.NumberOfTables</li>
+                    <li class="list-group-item border-white">Режим работы: @restaurant.WorkingHours</li>
+                    <li class="list-group-item border-white"></li>
+                </ul>
+                <div class="card-body border-white">
+                    <a href="#" class="card-link border-white"></a>
+                    <a href="#" class="card-link"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mx-auto">
+        <div class="col-md-6  mx-auto">
+            <p>Что бы забронировать столик выбирите свободный столик</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-md-4 mx-auto">
+
+            @foreach (var item in tableList)
+            {
+
+
+                <a href="/client/create/@item.Id"
+                   class="badge @(Check(item.Id) ? "badge-danger" : "badge-warning"  ) p-2 m-2">@item.ItemTable</a>
+
+            }
+        </div>
+    </div>
+    <div class="container fixed-bottom">
+        <div class="row ">
+            <div class="badge badge-warning p-2 ">1</div> <div> - стол свободен</div> 
+            <div class="badge badge-danger p-2 ">2</div> <div>- стол занят</div>
+        </div>
+    </div>
+
+
+
+
+
+
+}
+
+

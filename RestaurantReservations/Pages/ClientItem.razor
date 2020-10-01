@@ -1,0 +1,39 @@
+﻿@inherits ClientItemModel
+@page "/client/{action}/{paramEmpID:int}"
+@page "/client/{action}"
+
+<h1>Бронирование столика</h1>
+
+<EditForm Model="@client" OnValidSubmit="CreateReservation">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="form-row">
+
+        <div class="form-group col-md-6">
+            <label for="LastName" class="control-label">Фамилия</label>
+            <input type="text" class="form-control" @bind="client.LastName" />
+        </div>
+        <div class="form-group col-md-6">
+            <label for="Name" class="control-label">Имя</label>
+            <input type="text" class="form-control" @bind="client.Name" />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="BookingTime" class="control-label">Время начала брони</label>
+            <input type="time" class="form-control" @bind="client.BookingTime" />
+        </div>
+        <div class="form-group col-md-6">
+            <label for="DurationOfBooking" class="control-label">Время конца брони</label>
+            <input type="time" class="form-control" @bind="client.DurationOfBooking" />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label for="NumberOfPersons" class="control-label">Количество человек</label>
+            <input type="number" class="form-control" @bind="client.NumberOfPersons" />
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Забронировать</button>
+</EditForm>
+

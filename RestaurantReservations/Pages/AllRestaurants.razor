@@ -1,0 +1,34 @@
+﻿@inherits AllRestaurantsModel
+
+@page "/AllRestaurants/{action}/{paramEmpID:int}"
+@page "/AllRestaurants/{action}"
+@page  "/"
+
+
+
+
+<div class="container">
+    <div class="mx-auto " style="width: 50rem;">
+        <h1>Рестораны Челябинска</h1>
+    </div>
+</div>
+
+@if (empList == null)
+{
+<p><em>Loading...</em></p> }
+else
+{
+@foreach (var forecast in empList)
+{
+<div class="container">
+    <div class="card mx-auto m-3" style="width: 50rem;">
+        <img src="@forecast.Picture" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">@forecast.NameRestaurant</h5>
+            <p class="card-text">Режим работы: @forecast.WorkingHours</p>
+        </div>
+        <div class="card-body">
+            <a href="/restaurantItem/Details/@forecast.Id" class="card-link">Подробнее</a>
+        </div>
+    </div>
+</div>}}
